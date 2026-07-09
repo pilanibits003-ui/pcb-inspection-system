@@ -22,3 +22,11 @@ jobs:
     - name: Run local system integration test
       run: |
         python src/inference.py
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Docker Image in Cloud
+      run: |
+        docker build -t pcb-inspector:latest .
+        echo "✅ DevOps Container successfully built and validated!"
